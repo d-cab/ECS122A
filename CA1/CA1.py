@@ -72,5 +72,9 @@ def optimal_placement(n, d, a):
     # so we really only care about whether the ends are touching a node
     # every possible best solution is one that can also be reached by at least one edge touching a node
     # start the search a[0] + d and end the search a[n-1] - d. Thats the range of the possible placements
-    # 
+    # count the number of nodes at the start and just keep track of how many lost and gained
+    # when the count reaches a new high, record the location and the count.
+
+    
+    
     return
