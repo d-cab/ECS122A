@@ -76,13 +76,14 @@ def optimal_placement(n, d, a):
     # when the count reaches a new high, record the location and the count.
     start= 0 # start is the index of the node on the left end of the interval
     maxCount = 0
+    mid = (a[start] + 2 * d )// 2
     while ( (a[start] + d*2) <= a[n-1]):
         nodeCount = find_last_node(n, d, a, start) - start + 1
         if (nodeCount > maxCount):
-            maximum_count = nodeCount
-            optimalPlacement = (a[start] + 2*d) // 2
+            maxCount = nodeCount
+            mid = (a[start] + 2*d) // 2
         start += 1
-    print(optimalPlacement)
+    print(mid)
 
     return
 
