@@ -74,18 +74,23 @@ def optimal_placement(n, d, a):
     # start the search a[0] + d and end the search a[n-1] - d. Thats the range of the possible placements
     # count the number of nodes at the start and just keep track of how many lost and gained
     # when the count reaches a new high, record the location and the count.
-    start= 0 # start is the index of the node on the left end of the interval
+    start = 0 # start is the index of the node on the left end of the interval
+    end = 0 # index of the node on the right of the interval
+    len = 2*d
+    nodeCount = 0
     maxCount = 0
-    mid = (a[start] + 2 * d )// 2
-    while ( (a[start] + d*2) <= a[n-1]):
-        nodeCount = find_last_node(n, d, a, start) - start + 1
-        if (nodeCount > maxCount):
-            maxCount = nodeCount
-            mid = (a[start] + 2*d) // 2
-        start += 1
-    print(mid)
-
-    return
+    while(end < n):
+        
+        if (a[end] - a[start] <= len):
+            nodeCount = end - start + 1
+            if nodeCount > maxCount:
+                maxCount = nodeCount
+            end += 1
+        else:
+            start += 1
+                
+    print(maxCount)
+    
 
 # returns the index of the last node inside the interval
 def find_last_node(n, d, a, start):
